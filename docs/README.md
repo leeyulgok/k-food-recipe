@@ -10,6 +10,21 @@
 1. 프로젝트 구조와 컴포넌트 설계
     (1) 프로젝트 구조 설정하기
         - 폴더 구조
+            project
+                - app
+                    -- components  // 재사용 가능한 컴포넌트들
+                    -- pages       // 페이지들 (SSR과 SSG가 여기서 정의됨)
+                        --- index.tsx // 메인 페이지 (SSG 가능)
+                        --- menu.tsx  // 메뉴 리스트 페이지 (SSR)
+                        --- detail/[id].tsx // 상세 페이지 (동적 라우팅, SSR)
+                        -- lib         // 데이터 가져오기, 유틸리티 함수 등
+                    -- styles      // 글로벌 스타일, CSS/SCSS 파일들
+                    -- hooks       // 사용자 정의 React 훅
+                    -- context     // React Context API (상태 관리)
+                - data          // 정적 데이터 (SSG에 사용)
+                - public        // 정적 파일 (이미지, 아이콘 등)
+                - api           // 서버 사이드 로직 (API 라우팅, DB 연결 등)
+
     (2) 컴포넌트 설정하기
         - 컴포넌트 구조
             - Navber : HMK-Food / 검색, 재료(드롭다운), 요리방법(드롭다운), 메뉴바

@@ -12,5 +12,14 @@
 ## 접근방식
 접근 방식은 Bottom-Up 방식으로 개발을 진행했습니다.
 
+## 페이지 랜더링
+1. SSR
+    - 메뉴 리스트 페이지
+    - 상세 페이지
+2. SSG
+    - 메인 페이지
+3. CSR
+    - 검색기능
+
 #### 참고자료
 - 만개의 레시피 csv 파일: [링크](https://kadx.co.kr/opmk/frn/pmumkproductDetail/PMU_b72356bd-458a-4734-ba2e-f21de4167b0a/5)
