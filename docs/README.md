@@ -28,6 +28,7 @@
     (2) 컴포넌트 설정하기
         - 컴포넌트 구조
             - Navber : HMK-Food / 검색, 재료(드롭다운), 요리방법(드롭다운), 메뉴바
+                - 드롭다운 : framer-motion 라이브러리 사용
                 - Search
                 - Material
                 - Cooking Method
