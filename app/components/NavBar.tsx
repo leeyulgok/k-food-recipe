@@ -7,7 +7,7 @@ const NavBar = () => {
     <nav className="bg-white shadow-md">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
-          <div className="mr-3">
+          <div className="mr-1">
             <Image src="/images/k-food.webp" width={48} height={48} alt="로고"/>
           </div>
           <span className="font-semibold text-xl tracking-tight">
