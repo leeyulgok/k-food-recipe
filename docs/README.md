@@ -36,7 +36,7 @@
             - HeroSection : swiper 라이브러리 사용
                 - 홈페이지 소개, 이용방법, 주의사항
             - Main
-                - RecipeCard
+                - RecipeCard : csv-parse 라이브러리 사용
             - Footer : 정보
         - 레이아웃
 

@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "csv-parse": "^5.5.3",
+    "csv-parser": "^3.0.0",
     "framer-motion": "^10.16.16",
     "next": "13.5.6",
     "react": "^18",
