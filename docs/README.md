@@ -33,10 +33,11 @@
                 - Material
                 - Cooking Method
                 - MenuBar
-            - Header : 인기 요리
-            - Footer : 정보
+            - HeroSection : swiper 라이브러리 사용
+                - 홈페이지 소개, 이용방법, 주의사항
             - Main
                 - RecipeCard
+            - Footer : 정보
         - 레이아웃
 
     (3) 페이지
