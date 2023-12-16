@@ -1,11 +1,14 @@
 import '../app/globals.css'
 import RootLayout from '../app/layout'
+import DataProvider from '../contexts/DataProvider';
 
 function MyApp({ Component, pageProps }: any) {
   return (
-    <RootLayout>
-      <Component {...pageProps} />
-    </RootLayout>
+    <DataProvider>
+      <RootLayout>
+        <Component {...pageProps} />
+      </RootLayout>
+    </DataProvider>
   )
 }
 
