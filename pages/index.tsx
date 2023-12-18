@@ -4,9 +4,9 @@ import csv from 'csv-parser';
 import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
 
-import HeroSection from "../app/components/HeroSection";
+import HeroSection from '@/components/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/HeroSectionList";
-import RecipeSection from "../app/components/RecipeSection";
+import RecipeSection from "@/components/RecipeSection";
 import DataContext from '../contexts/DataContext';
 import useTopRecipes from '../hooks/useTopRecipes';
 

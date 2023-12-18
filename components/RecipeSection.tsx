@@ -1,14 +1,9 @@
 import RecipeCard from "./RecipeCard";
 import { FC } from "react";
-
-type Recipe = {
-  image: string;
-  title: string;
-  description: string;
-};
+import { DataType } from "@/utils/types/DataType";
 
 type RecipeSectionProps = {
-  recipes: Recipe[];
+  recipes: DataType[];
 };
 
 const RecipeSection: FC<RecipeSectionProps> = ({ recipes }) => {
