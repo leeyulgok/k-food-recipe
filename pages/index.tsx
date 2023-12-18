@@ -10,7 +10,11 @@ import RecipeSection from "@/components/RecipeSection";
 import DataContext from '../contexts/DataContext';
 import useTopRecipes from '../hooks/useTopRecipes';
 
-export default function Home({ recipes } : any) {
+interface HomeProps {
+  recipes: DataType[];
+}
+
+export default function Home({ recipes }: HomeProps) {
   const { updateData } = useContext(DataContext);
 
   useEffect(() => {

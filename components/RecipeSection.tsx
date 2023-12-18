@@ -10,9 +10,10 @@ const RecipeSection: FC<RecipeSectionProps> = ({ recipes }) => {
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <h1 className=" text-3xl font-semibold">Popular views</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {recipes.map((recipe, index) => (
-            <RecipeCard key={index} {...recipe} />
+            <RecipeCard key={index} recipe={recipe} />
           ))}
         </div>
       </div>
