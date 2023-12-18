@@ -1,0 +1,24 @@
+.footerSection {
+  margin-bottom: 1px;
+}
+
+.footerTitle {
+  margin-bottom: 10px;
+  color: #e53935;
+  font-size: 1.4em;
+}
+
+.content {
+  margin-bottom: 5px;
+}
+
+.content{
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: pre-line;
+}
+
+.content :hover {
+  color: rgb(131, 2, 2);
+}
