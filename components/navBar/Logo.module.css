@@ -1,0 +1,15 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoContainer :hover{
+  cursor: pointer;
+}
+
+.logoTitle {
+  margin-left: 8px;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: #333;
+}

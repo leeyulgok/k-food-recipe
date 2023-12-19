@@ -1,0 +1,36 @@
+.dropdownContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdownButton {
+  color: #333;
+  font-weight: 900;
+  padding: 8px;
+  margin: 0 15px 0 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus {
+  color: #f78f8f;
+}
+
+.dropdownMenu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 10;
+  display: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdownMenuOpen {
+  display: block;
+}

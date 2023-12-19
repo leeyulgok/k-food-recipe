@@ -1,0 +1,9 @@
+.menuItems {
+  width: 100px;
+  display: block;
+  padding: 8px 12px 8px 12px;
+}
+
+.menuItems:hover {  
+  background-color: rgb(243, 219, 219);
+}
