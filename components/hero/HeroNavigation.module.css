@@ -1,0 +1,22 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1rem; 
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navigation:hover {
+  background-color: black;
+}
+
+.navigation button {
+  margin: 0 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
