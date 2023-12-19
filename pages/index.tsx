@@ -6,7 +6,7 @@ import { DataType } from '@/utils/types/DataType';
 
 import HeroSection from '@/components/hero/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/HeroSectionList";
-import RecipeSection from "@/components/RecipeSection";
+import RecipeSection from "@/components/recipe/RecipeSection";
 import DataContext from '../contexts/DataContext';
 import useTopRecipes from '../hooks/useTopRecipes';
 

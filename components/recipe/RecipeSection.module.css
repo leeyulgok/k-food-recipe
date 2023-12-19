@@ -1,0 +1,22 @@
+.section {
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.title {
+  text-align: left;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
