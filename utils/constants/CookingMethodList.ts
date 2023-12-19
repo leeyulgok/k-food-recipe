@@ -1,15 +1,6 @@
 const COOKING_METHOD = {
   TITLE: "Cooking Method",
-  LIST: [
-    "Processed foods",
-    "Rice",
-    "Flour",
-    "Vegetables",
-    "Pork",
-    "Chicken meat",
-    "Beef",
-    "Etc",
-  ],
+  LIST: ["Meat", "Rice", "Vegetables", "etc"],
 };
 
 export default COOKING_METHOD;

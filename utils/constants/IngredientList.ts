@@ -1,6 +1,6 @@
 const INGREDIENT = {
   TITLE: "Ingredient",
-  LIST: ["Fried", "Grilling", "Boiling", "Stir-fry", "Seasoned", "Etc"],
+  LIST: ["Boiling", "Stir-fry", "etc"],
 };
 
 export default INGREDIENT;
