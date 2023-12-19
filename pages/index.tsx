@@ -4,7 +4,7 @@ import csv from 'csv-parser';
 import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
 
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/components/hero/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/HeroSectionList";
 import RecipeSection from "@/components/RecipeSection";
 import DataContext from '../contexts/DataContext';
