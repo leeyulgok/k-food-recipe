@@ -22,7 +22,7 @@ const Dropdown: FC<DropdownProps> = ({ title, items }) => {
       </button>
       <AnimateDropdown isOpen={isOpen} className={styles.dropdownMenu}>
         {items.map((item, index) => (
-          <MenuItem key={index} item={item} />
+          <MenuItem key={index} title={title} item={item} />
         ))}
       </AnimateDropdown>
     </div>
