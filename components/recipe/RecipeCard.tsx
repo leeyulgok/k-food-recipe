@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { DataType } from "@/utils/types/DataType";
 import styles from "./RecipeCard.module.css";
+import Card from "../common/Card";
 import Badge from "../common/Badge";
 import Video from "../common/Video";
 
@@ -22,7 +23,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
   } = recipe;
 
   return (
-    <div className={styles.recipeCard}>
+    <Card>
       <div className={styles.recipeCardHeader}>
         <div className={styles.headerBox}>
           <div className={styles.recipeNumber}>#{RCP_SNO}</div>
@@ -36,8 +37,10 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
           <Badge text={CKG_TIME_NM} />
         </div>
       </div>
-      <Video youtubeId={Y_ID} />
-    </div>
+      <div>
+        <Video youtubeId={Y_ID} />
+      </div>
+    </Card>
   );
 };
 
