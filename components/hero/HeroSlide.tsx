@@ -19,6 +19,7 @@ const HeroSlide: FC<HeroSlideProps> = ({ backgroundImage, title, description, bu
         width={1000}
         height={1000}
         className={styles.backgroundImage}
+        priority
       />
       <div className={styles.textContainer}>
         <div className={styles.textContent}>

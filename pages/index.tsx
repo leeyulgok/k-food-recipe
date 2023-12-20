@@ -33,8 +33,10 @@ export default function Home({ recipes }: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const recipes: DataType[] = [];
-
   const filePath = 'public/data/TB_RECIPE_SEARCH.csv';
+
+  context.res.setHeader('Set-Cookie', 'token=value; Path=/; SameSite=None; Secure; HttpOnly');
+  
   await new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
       .pipe(csv())
