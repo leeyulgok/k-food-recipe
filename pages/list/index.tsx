@@ -1,5 +1,6 @@
 import React from "react";
-import ListLayout from "./ListLayout";
+import ListCard from "@/components/list/ListCard";
+import ListContainer from "./ListContainer";
 import fs from "fs";
 import csv from "csv-parser";
 import { DataType } from "@/utils/types/DataType";
@@ -11,14 +12,11 @@ interface SearchPageProps {
 
 const SearchPage = ({ recipes }: SearchPageProps) => {
   return (
-    <ListLayout>
+    <ListContainer>
       {recipes.map((recipe) => (
-        <div key={recipe.RCP_SNO}>
-          {recipe.CKG_NM}, {recipe.CKG_NM_KO}, {recipe.CKG_MTRL_ACTO_NM} ,
-          {recipe.CKG_MTH_ACTO_NM}
-        </div>
+        <ListCard key={recipe.RCP_SNO} recipe={recipe} />
       ))}
-    </ListLayout>
+    </ListContainer>
   );
 };
 

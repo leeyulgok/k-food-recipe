@@ -1,4 +1,5 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from "react";
+import styles from "./ListLayout.module.css";
 
 interface ListLayoutProps {
   children: ReactNode;
@@ -6,7 +7,7 @@ interface ListLayoutProps {
 
 const ListLayout: FC<ListLayoutProps> = ({ children }) => {
   return (
-    <div>
+    <div className={styles.listLayout}>
       {children}
     </div>
   );

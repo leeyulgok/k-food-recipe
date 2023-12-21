@@ -1,0 +1,61 @@
+.listCard {
+  width: 600px;
+  height: 720px;
+  flex-direction: column;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumbnailContainer {
+  position: relative;
+  width: 100%;
+}
+
+.recipeCardHeader {
+  padding: 16px;
+  background-color: #f9f9f9;
+}
+
+.headerBox {
+  align-items: center;
+}
+
+.recipeNumber {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.titleBox {
+  text-align: center;
+  margin: 10px;
+}
+
+.recipeTitleEn {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.recipeTitleKo {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.recipeDetails {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1px;
+  position: absolute;
+  bottom: 0;
+}

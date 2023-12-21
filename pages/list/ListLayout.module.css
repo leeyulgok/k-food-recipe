@@ -1,0 +1,11 @@
+.listLayout {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  flex-wrap: nowrap;
+  width: 100vw;
+  justify-content: center;
+  scroll-padding: 50%;
+  margin: 30px 0 30px 0;
+}
