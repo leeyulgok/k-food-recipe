@@ -46,6 +46,15 @@
     (3) 페이지
         - 메인 페이지
         - 메뉴 리스트 페이지
+            - list/
+                - cookingMethod/
+                    - cookingMethod.tsx
+                - ingredient/
+                    - ingredient.tsx
+                - index.tsx
+                - ListLayout.tsx
+                - ListContainer.tsx
+                
         - 상세 페이지
 
     (4) 공통 스타일

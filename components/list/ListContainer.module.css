@@ -2,4 +2,12 @@
   display: flex;
   gap: 100px;
   margin: 20px 0 50px 0;
+  padding: 0 50px;
+  justify-content: center;
+  
+  scroll-snap-type: x proximity;
+}
+
+.listContainer > * {
+  scroll-snap-align: center;
 }
