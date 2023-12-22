@@ -4,7 +4,7 @@ import fs from "fs";
 import csv from "csv-parser";
 import { DataType } from "@/utils/types/DataType";
 import { GetServerSidePropsContext, GetServerSideProps } from "next";
-import ListContainer from "../ListContainer";
+import ListContainer from "../../../components/list/ListContainer";
 
 interface IngredientPageProps {
   recipes: DataType[];

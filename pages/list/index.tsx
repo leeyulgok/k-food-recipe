@@ -1,6 +1,6 @@
 import React from "react";
 import ListCard from "@/components/list/ListCard";
-import ListContainer from "./ListContainer";
+import ListContainer from "../../components/list/ListContainer";
 import fs from "fs";
 import csv from "csv-parser";
 import { DataType } from "@/utils/types/DataType";

@@ -1,5 +1,5 @@
 import React from 'react';
-import ListContainer from '../ListContainer';
+import ListContainer from '../../../components/list/ListContainer';
 import ListCard from '@/components/list/ListCard';
 import fs from 'fs';
 import csv from 'csv-parser';
