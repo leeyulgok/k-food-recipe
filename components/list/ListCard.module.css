@@ -8,6 +8,9 @@
   background-color: #f9f9f9;
   overflow: hidden;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  will-change: transform;
 }
 
 .thumbnailContainer {
@@ -58,4 +61,9 @@
   gap: 1px;
   position: absolute;
   bottom: 0;
+}
+
+.cardEmphasized {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

@@ -1,13 +1,18 @@
 .listContainer {
   display: flex;
   gap: 100px;
-  margin: 20px 0 50px 0;
+  margin: 70px 0 50px 0;
   padding: 0 50px;
   justify-content: center;
-  
   scroll-snap-type: x proximity;
+  perspective: 1500px;
 }
 
 .listContainer > * {
   scroll-snap-align: center;
+}
+
+.cardEmphasized {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

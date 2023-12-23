@@ -1,27 +1,13 @@
-import React, { FC, ReactNode, useRef, useEffect } from "react";
+import React, { FC, ReactNode, forwardRef } from "react";
 import styles from "./ListLayout.module.css";
 
 interface ListLayoutProps {
   children: ReactNode;
 }
 
-const ListLayout:FC<ListLayoutProps> = (({ children }) => {
-  const layoutRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const layout = layoutRef.current; 
-
-    if (layout) {
-      const firstCard = layout.firstChild?.firstChild as HTMLElement;
-      if (firstCard) {
-        const scrollPosition = firstCard.offsetLeft - (layout.offsetWidth - firstCard.offsetWidth) / 2;
-        layout.scrollLeft = scrollPosition;
-      }
-    }
-  }, [layoutRef]);
-
+const ListLayout = forwardRef<HTMLDivElement, ListLayoutProps> (({ children }, ref) => {
   return (
-    <div className={styles.listLayout} ref={layoutRef}>
+    <div ref={ref} className={styles.listLayout}>
       {children}
     </div>
   );

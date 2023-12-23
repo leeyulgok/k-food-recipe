@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { DataType } from "@/utils/types/DataType";
 import Card from "../common/Card";
 import styles from "./ListCard.module.css";
@@ -10,6 +10,8 @@ interface ListCardProps {
 }
 
 const ListCard: FC<ListCardProps> = ({ recipe }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
   const {
     RCP_SNO,
     CKG_NM,
@@ -25,7 +27,7 @@ const ListCard: FC<ListCardProps> = ({ recipe }) => {
   } = recipe;
 
   return (
-    <Card>
+    <Card ref={cardRef}>
       <div className={styles.listCard}>
         <div className={styles.thumbnailContainer}>
           <Thumbnail youtubeId={Y_ID} />
