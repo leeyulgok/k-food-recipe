@@ -1,0 +1,46 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+  z-index: 1000;
+}
+
+.modalBackgroundHidden {
+  animation: fadeOut 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.modalContainer {
+  background-color: white;
+  padding: 20px;
+  width: 60%;
+  border-radius: 10px;
+  display: flex;
+  animation: slideIn 0.3s;
+}
+
+/* ... 나머지 스타일 ... */

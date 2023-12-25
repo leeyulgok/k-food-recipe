@@ -1,6 +1,5 @@
-import React from 'react';
-import ListContainer from '../../../components/list/ListContainer';
-import ListCard from '@/components/list/ListCard';
+import React, { ReactNode} from 'react';
+import ListLayout from '@/components/list/ListLayout';
 import fs from 'fs';
 import csv from 'csv-parser';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
@@ -8,15 +7,14 @@ import { DataType } from '@/utils/types/DataType';
 
 interface CookingMethodPageProps {
   recipes: DataType[];
+  children: ReactNode;
 }
 
-const CookingMethodPage = ({ recipes }: CookingMethodPageProps) => {
+const CookingMethodPage = ({ recipes, children }: CookingMethodPageProps) => {
   return (
-    <ListContainer>
-      {recipes.map((recipe) => (
-        <ListCard key={recipe.RCP_SNO} recipe={recipe} />
-      ))}
-    </ListContainer>
+    <ListLayout recipes={recipes}>
+      {children}
+    </ListLayout>
   );
 };
 

@@ -7,10 +7,18 @@ import Thumbnail from "../common/Thumbnail";
 
 interface ListCardProps {
   recipe: DataType;
+  onClick: (recipe: DataType) => void;
+  isModalOpen: boolean;
 }
 
-const ListCard: FC<ListCardProps> = ({ recipe }) => {
+const ListCard: FC<ListCardProps> = ({ recipe, onClick, isModalOpen }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick(recipe);
+    }
+  };
 
   const {
     RCP_SNO,
@@ -27,7 +35,7 @@ const ListCard: FC<ListCardProps> = ({ recipe }) => {
   } = recipe;
 
   return (
-    <Card ref={cardRef}>
+    <Card ref={cardRef} onClick={handleClick} isModalOpen={isModalOpen}>
       <div className={styles.listCard}>
         <div className={styles.thumbnailContainer}>
           <Thumbnail youtubeId={Y_ID} />

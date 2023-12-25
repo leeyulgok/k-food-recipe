@@ -1,22 +1,20 @@
-import React from "react";
-import ListCard from "@/components/list/ListCard";
+import React, { ReactNode } from "react";
 import fs from "fs";
 import csv from "csv-parser";
 import { DataType } from "@/utils/types/DataType";
 import { GetServerSidePropsContext, GetServerSideProps } from "next";
-import ListContainer from "../../../components/list/ListContainer";
+import ListLayout from "@/components/list/ListLayout";
 
 interface IngredientPageProps {
   recipes: DataType[];
+  children: ReactNode;
 }
 
-const IngredientPage = ({ recipes }: IngredientPageProps) => {
+const IngredientPage = ({ recipes, children }: IngredientPageProps) => {
   return (
-    <ListContainer>
-      {recipes.map((recipe) => (
-        <ListCard key={recipe.RCP_SNO} recipe={recipe} />
-      ))}
-    </ListContainer>
+    <ListLayout recipes={recipes}>
+      {children}
+    </ListLayout>
   );
 };
 

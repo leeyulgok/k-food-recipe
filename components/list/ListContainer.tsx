@@ -1,16 +1,18 @@
-import React, { FC, ReactNode, useEffect, useRef } from "react";
-import ListLayout from "./ListLayout";
+import React, { FC, useEffect, useRef } from "react";
 import styles from "./ListContainer.module.css";
+import ListCard from "./ListCard";
+import { DataType } from "@/utils/types/DataType";
 
 interface ListContainerProps {
-  children: ReactNode;
+  openModal: (recipe: DataType) => void;
+  recipes: DataType[];
+  openedModalId: number | null;
 }
 
-const ListContainer: FC<ListContainerProps> = ({ children }) => {
+const ListContainer: FC<ListContainerProps> = ({ openModal, recipes, openedModalId }) => {
   const layoutRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    console.log("ListContainer 렌더링");
     if (layoutRef.current) {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -23,12 +25,14 @@ const ListContainer: FC<ListContainerProps> = ({ children }) => {
           });
         },
         {
-          root: layoutRef.current,
+          root: layoutRef.current.parentElement,
           threshold: 0.5,
         }
       );
-      
-      const cards = Array.from(layoutRef.current.querySelectorAll('.Card_card__atjAU'));
+
+      const cards = Array.from(
+        layoutRef.current.querySelectorAll(".Card_card__atjAU")
+      );
       cards.forEach((card) => observer.observe(card as Element));
 
       return () => {
@@ -38,11 +42,11 @@ const ListContainer: FC<ListContainerProps> = ({ children }) => {
   }, []);
 
   return (
-    <ListLayout ref={layoutRef}>
-      <div className={styles.listContainer}>
-        {children}
-      </div>
-    </ListLayout>
+    <div ref={layoutRef} className={styles.listContainer}>
+      {recipes.map(recipe => (
+        <ListCard key={recipe.RCP_SNO} recipe={recipe} onClick={() => openModal(recipe)} isModalOpen={openedModalId === recipe.RCP_SNO}  />
+      ))}
+    </div>
   );
 };
 
