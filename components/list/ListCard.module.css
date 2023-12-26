@@ -13,6 +13,10 @@
   will-change: transform;
 }
 
+.listCard:hover {
+  cursor: pointer;
+}
+
 .thumbnailContainer {
   position: relative;
   width: 100%;
