@@ -1,7 +1,9 @@
 import MenuList from "./MenuList";
-import SearchBar from "./SearchBar";
 import Logo from "./Logo";
 import styles from "./NavBar.module.css";
+import dynamic from "next/dynamic";
+
+const DynamicSearchBar = dynamic(() => import('./SearchBar'), { ssr: false });
 
 const NavBar = () => {
   return (
@@ -10,7 +12,7 @@ const NavBar = () => {
         <Logo />
         <div className={styles.menuSection}>
           <MenuList />
-          <SearchBar />
+          <DynamicSearchBar />
         </div>
       </div>
     </nav>
