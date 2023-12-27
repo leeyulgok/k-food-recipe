@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
 import { readCsvData } from '@/utils/func/readCsvData';
@@ -6,26 +6,12 @@ import { readCsvData } from '@/utils/func/readCsvData';
 import HeroSection from '@/components/hero/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/heroSectionList";
 import RecipeSection from "@/components/recipe/RecipeSection";
-import DataContext from '../contexts/DataContext';
-import useTopRecipes from '../hooks/useTopRecipes';
 
-interface HomeProps {
-  recipes: DataType[];
-}
-
-export default function Home({ recipes }: HomeProps) {
-  const { updateData } = useContext(DataContext);
-
-  useEffect(() => {
-    updateData(recipes);
-  }, [recipes]);
-
-  const topRecipes = useTopRecipes();
-  
+export default function Home({ recipes }: {recipes: DataType[]}) {
   return (
     <>
       <HeroSection sections={HERO_SECTION_LIST}/>
-      <RecipeSection recipes={topRecipes}/>
+      <RecipeSection recipes={recipes}/>
     </>
   );
 }
@@ -33,7 +19,9 @@ export default function Home({ recipes }: HomeProps) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader('Set-Cookie', 'token=value; Path=/; SameSite=None; Secure; HttpOnly');
   
-  const recipes = await readCsvData();
+  let recipes = await readCsvData();
+
+  recipes = recipes.sort((a, b) => b.INQ_CNT - a.INQ_CNT).slice(0, 4);
   
   return { props: { recipes } };
 };
