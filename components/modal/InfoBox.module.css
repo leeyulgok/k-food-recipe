@@ -1,0 +1,25 @@
+.infoBox {
+  margin: auto;
+  padding: auto;
+}
+
+.infoTitle {
+  font-size: 1.5em;
+  color: #8b0000;
+  margin: 10px;
+  margin: 10px 0; 
+}
+
+.infoContent {
+  background-color: #fff0f0;
+  border: 1px solid #ffb6b9;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #3e3e3e;
+  max-height: 200px;
+  white-space: pre-wrap;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  text-align: center;
+}

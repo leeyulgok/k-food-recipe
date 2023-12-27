@@ -3,7 +3,9 @@ import styles from "./DetailModal.module.css";
 import { DataType } from "@/utils/types/DataType";
 import Video from "../common/Video";
 import Card from "../common/Card";
-import Badge from "../common/Badge";
+import BadgeContainer from "./BadgeContainer";
+import InfoBox from "./InfoBox";
+import { INGREDIENT, EXPLANATION, DETAIL_MODAL_INFO } from "@/utils/constants/default";
 
 interface DetailModalProps {
   recipe: DataType | null;
@@ -11,11 +13,23 @@ interface DetailModalProps {
 }
 
 const DetailModal: FC<DetailModalProps> = ({ recipe, closeModal }) => {
-  const parseIngredients = (ingredients: string) => {
-    return ingredients.split(" | ");
-  };
-
   if (!recipe) return null;
+
+  const {
+    RCP_SNO, CKG_NM, CKG_NM_KO, RGTR_NM, INQ_CNT, RCMM_CNT, SRAP_CNT,
+    CKG_MTH_ACTO_NM, CKG_STA_ACTO_NM, CKG_INBUN_NM, CKG_DODF_NM, CKG_TIME_NM,
+    CKG_IPDC, Y_ID
+  } = recipe;
+
+  const ingredients = recipe.CKG_MTRL_CN.split(" | ");
+
+  const badgeTexts = [
+    CKG_MTH_ACTO_NM,
+    CKG_STA_ACTO_NM,
+    CKG_INBUN_NM,
+    CKG_DODF_NM,
+    CKG_TIME_NM
+  ];
 
   return (
     <div className={styles.modalBackground} onClick={closeModal}>
@@ -31,48 +45,26 @@ const DetailModal: FC<DetailModalProps> = ({ recipe, closeModal }) => {
             <div className={styles.mainContainer}>
               <div className={styles.videoContainer}>
                 <div className={styles.recipeNumberBox}>
-                  <div className={styles.recipeNunber}>#{recipe.RCP_SNO}</div>
-                  <div className={styles.badgeBox}>
-                    <Badge text={recipe.CKG_MTH_ACTO_NM} />
-                    <Badge text={recipe.CKG_STA_ACTO_NM} />
-                    <Badge text={recipe.CKG_INBUN_NM} />
-                    <Badge text={recipe.CKG_DODF_NM} />
-                    <Badge text={recipe.CKG_TIME_NM} />
-                  </div>
+                  <div className={styles.recipeNunber}>#{RCP_SNO}</div>
+                  <BadgeContainer badges={badgeTexts} />
                 </div>
-                <Video youtubeId={recipe.Y_ID} />
+                <Video youtubeId={Y_ID} />
               </div>
               <div className={styles.titleContainer}>
                 <h2 className={styles.title}>
-                  {recipe.CKG_NM} ({recipe.CKG_NM_KO})
+                  {CKG_NM} ({CKG_NM_KO})
                 </h2>
                 <div className={styles.defaultInfo}>
-                  <p>writter : {recipe.RGTR_NM}</p>
-                  <p>views : {recipe.INQ_CNT}</p>
-                  <p>recommendations : {recipe.RCMM_CNT}</p>
-                  <p>scraps : {recipe.SRAP_CNT}</p>
+                  <p>{DETAIL_MODAL_INFO.WRITTER} : {RGTR_NM}</p>
+                  <p>{DETAIL_MODAL_INFO.VIEWS} : {INQ_CNT}</p>
+                  <p>{DETAIL_MODAL_INFO.RECOMMENDATIONS} : {RCMM_CNT}</p>
+                  <p>{DETAIL_MODAL_INFO.SCRAPS} : {SRAP_CNT}</p>
                 </div>
               </div>
             </div>
             <div className={styles.detailsContainer}>
-              <div className={styles.ingredientBox}>
-                <h3 className={styles.ingredientTitle}>Ingredient</h3>
-                <div className={styles.ingredientList}>
-                  <ul>
-                    {parseIngredients(recipe.CKG_MTRL_CN).map(
-                      (ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
-                      )
-                    )}
-                  </ul>
-                </div>
-              </div>
-              <div className={styles.explanationBox}>
-                <h3 className={styles.explanationTitle}>Explanation</h3>
-                <div className={styles.explanationText}>
-                  <p>{recipe.CKG_IPDC}</p>
-                </div>
-              </div>
+              <InfoBox type="ingredients" title={INGREDIENT} content={ingredients} />
+              <InfoBox type="explanation" title={EXPLANATION} content={CKG_IPDC} />
             </div>
           </div>
         </div>
