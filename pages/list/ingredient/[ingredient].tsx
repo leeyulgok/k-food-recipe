@@ -1,16 +1,11 @@
-import React, { ReactNode } from "react";
-import { DataType } from "@/utils/types/DataType";
+import React from "react";
 import { GetServerSidePropsContext, GetServerSideProps } from "next";
-import ListLayout from "@/components/list/ListLayout";
+import { DataType } from "@/utils/types/DataType";
 import { readCsvData } from "@/utils/func/readCsvData";
+import ListPage from "@/components/list/ListPage";
 
-interface IngredientPageProps {
-  recipes: DataType[];
-  children: ReactNode;
-}
-
-const IngredientPage = ({ recipes, children }: IngredientPageProps) => {
-  return <ListLayout recipes={recipes}>{children}</ListLayout>;
+const IngredientPage = ({ recipes }: { recipes: DataType[] }) => {
+  return <ListPage recipes={recipes} />;
 };
 
 export default IngredientPage;
