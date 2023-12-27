@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from "react";
 import HeroSlide from "./HeroSlide";
 import HeroNavigation from "./HeroNavigation";
 import styles from "./HeroSection.module.css";
+import useHeroSlider from "@/hooks/useHeroSlider";
 
 type Section = {
   backgroundImage: string;
@@ -15,19 +16,7 @@ type HeroSectionProps = {
 };
 
 const HeroSection: FC<HeroSectionProps> = ({ sections }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalSlides = sections.length;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [currentIndex, totalSlides]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const { currentIndex, goToSlide } = useHeroSlider(sections.length);
 
   return (
     <section className={styles.heroSection}>
@@ -45,7 +34,7 @@ const HeroSection: FC<HeroSectionProps> = ({ sections }) => {
             <HeroSlide {...section}>
               <HeroNavigation
                 currentIndex={currentIndex}
-                totalSlides={totalSlides}
+                totalSlides={sections.length}
                 goToSlide={goToSlide}
               />
             </HeroSlide>
