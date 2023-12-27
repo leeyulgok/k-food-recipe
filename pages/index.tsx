@@ -17,8 +17,6 @@ export default function Home({ recipes }: {recipes: DataType[]}) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  context.res.setHeader('Set-Cookie', 'token=value; Path=/; SameSite=None; Secure; HttpOnly');
-  
   let recipes = await readCsvData();
 
   recipes = recipes.sort((a, b) => b.INQ_CNT - a.INQ_CNT).slice(0, 4);
