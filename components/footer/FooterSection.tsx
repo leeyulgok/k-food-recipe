@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import styles from "./FooterSection.module.css";
-import Link from "next/link";
+import FooterItem from "./FooterItem";
 
 interface FooterSectionProps {
   title: string;
@@ -16,7 +16,7 @@ const FooterSection: FC<FooterSectionProps> = ({ title, contents }) => {
           <ul>
             {contents.map((content, index) => (
               <li key={index} className={styles.content}>
-                <Link href="#">{content}</Link>
+                <FooterItem title={title} content={content} />
               </li>
             ))}
           </ul>

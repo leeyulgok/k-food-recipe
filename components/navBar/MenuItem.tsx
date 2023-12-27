@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styles from "./MenuItem.module.css";
 import Link from "next/link";
+import { getTitlePath } from "@/utils/func/getTitlePath";
 
 type MenuItemProps = {
   title: string
@@ -19,13 +20,3 @@ const MenuItem: FC<MenuItemProps> = ({ title, item }) => {
 
 export default MenuItem;
 
-const getTitlePath = (title: string) => {
-  switch (title) {
-    case "Ingredient":
-      return "ingredient";
-    case "Cooking Method":
-      return "cookingMethod";
-    default:
-      return title.toLowerCase();
-  }
-};
