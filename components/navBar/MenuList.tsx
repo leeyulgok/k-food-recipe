@@ -1,7 +1,8 @@
 "use client"
+
 import Dropdown from './Dropdown';
-import INGREDIENT from '@/utils/constants/IngredientList';
-import COOKING_METHOD from '@/utils/constants/CookingMethodList';
+import INGREDIENT from '@/utils/constants/ingredientList';
+import COOKING_METHOD from '@/utils/constants/cookingMethodList';
 import styles from './MenuList.module.css'
 
 const MenuList = () => {

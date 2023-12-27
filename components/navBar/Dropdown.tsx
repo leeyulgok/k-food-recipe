@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import MenuItem from "./MenuItems";
+import MenuItem from "./MenuItem";
 import AnimateDropdown from "../animate/AnimateDropdown";
 import styles from "./Dropdown.module.css";
 

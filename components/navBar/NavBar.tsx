@@ -7,7 +7,7 @@ const DynamicSearchBar = dynamic(() => import('./SearchBar'), { ssr: false });
 
 const NavBar = () => {
   return (
-    <nav className={styles.navBar}>
+    <nav className={styles.navBar} aria-label="main-nav">
       <div className={styles.navContainer}>
         <Logo />
         <div className={styles.menuSection}>

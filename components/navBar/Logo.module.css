@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-.logoContainer :hover{
+.logoContainer:hover{
   cursor: pointer;
 }
 
