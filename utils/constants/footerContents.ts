@@ -1,3 +1,5 @@
+const gitLink = "https://github.com/leeyulgok/k-food-recipe";
+ 
 const FOOTER_CONTENTS = {
   HM_FOOD: {
     TITLE: "How to Make K-Food",
@@ -5,7 +7,7 @@ const FOOTER_CONTENTS = {
   },
   PROJECT_DES: {
     TITLE: "Project Description",
-    CONTENTS: `© ${new Date().getFullYear()} Project. All rights reserved.`,
+    CONTENTS: `© ${new Date().getFullYear()} Project.\ndbfrhr20@gmail.com\nAll rights reserved.\n${gitLink}`,
   },
 };
 
