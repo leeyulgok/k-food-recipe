@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
 
 import HeroSection from '@/components/hero/HeroSection';
-import HERO_SECTION_LIST from "@/utils/constants/HeroSectionList";
+import HERO_SECTION_LIST from "@/utils/constants/heroSectionList";
 import RecipeSection from "@/components/recipe/RecipeSection";
 import DataContext from '../contexts/DataContext';
 import useTopRecipes from '../hooks/useTopRecipes';

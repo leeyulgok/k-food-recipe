@@ -1,8 +1,8 @@
 import React from "react";
 import FooterSection from "./FooterSection";
 import styles from "./Footer.module.css";
-import INGREDIENT from "@/utils/constants/IngredientList";
-import COOKING_METHOD from "@/utils/constants/CookingMethodList";
+import INGREDIENT from "@/utils/constants/ingredientList";
+import COOKING_METHOD from "@/utils/constants/cookingMethodList";
 
 const Footer = () => {
   const HMFood = {

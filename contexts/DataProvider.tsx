@@ -1,6 +1,6 @@
 import React, { useState, FC, ReactNode } from 'react';
 import DataContext from './DataContext';
-import { DataType } from '@/utils/types/DataType'; // 경로 확인 필요
+import { DataType } from '@/utils/types/DataType';
 
 interface DataProviderProps {
   children: ReactNode;
