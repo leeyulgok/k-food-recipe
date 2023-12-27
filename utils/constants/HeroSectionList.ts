@@ -1,18 +1,20 @@
+import IMAGE_PATHS from "./imagePath";
+
 const HERO_SECTION_LIST = [
   {
-    backgroundImage: "/images/background1.webp",
+    backgroundImage: IMAGE_PATHS.BACKGROUND_ONE,
     title: "Welcome to K-Food",
     description: "Discover the best Korean food recipes...",
     buttonText: "Learn More",
   },
   {
-    backgroundImage: "/images/background2.webp",
+    backgroundImage: IMAGE_PATHS.BACKGROUND_TWO,
     title: "How to use",
     description: "Discover the best Korean food recipes...",
     buttonText: "Learn More",
   },
   {
-    backgroundImage: "/images/background3.webp",
+    backgroundImage: IMAGE_PATHS.BACKGROUND_THREE,
     title: "Caution",
     description: "Discover the best Korean food recipes...",
     buttonText: "Learn More",

@@ -1,0 +1,1 @@
+export const FILE_PATH = "public/data/TB_RECIPE_SEARCH.csv";

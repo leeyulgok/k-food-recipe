@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import fs from 'fs';
-import csv from 'csv-parser';
 import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
+import { readCsvData } from '@/utils/func/readCsvData';
 
 import HeroSection from '@/components/hero/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/heroSectionList";
@@ -32,18 +31,9 @@ export default function Home({ recipes }: HomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const recipes: DataType[] = [];
-  const filePath = 'public/data/TB_RECIPE_SEARCH.csv';
-
   context.res.setHeader('Set-Cookie', 'token=value; Path=/; SameSite=None; Secure; HttpOnly');
   
-  await new Promise((resolve, reject) => {
-    fs.createReadStream(filePath)
-      .pipe(csv())
-      .on('data', (data: DataType) => recipes.push(data))
-      .on('end', resolve)
-      .on('error', reject);
-  });
+  const recipes = await readCsvData();
   
   return { props: { recipes } };
 };

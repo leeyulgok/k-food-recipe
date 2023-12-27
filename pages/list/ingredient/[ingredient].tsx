@@ -1,9 +1,8 @@
 import React, { ReactNode } from "react";
-import fs from "fs";
-import csv from "csv-parser";
 import { DataType } from "@/utils/types/DataType";
 import { GetServerSidePropsContext, GetServerSideProps } from "next";
 import ListLayout from "@/components/list/ListLayout";
+import { readCsvData } from "@/utils/func/readCsvData";
 
 interface IngredientPageProps {
   recipes: DataType[];
@@ -11,11 +10,7 @@ interface IngredientPageProps {
 }
 
 const IngredientPage = ({ recipes, children }: IngredientPageProps) => {
-  return (
-    <ListLayout recipes={recipes}>
-      {children}
-    </ListLayout>
-  );
+  return <ListLayout recipes={recipes}>{children}</ListLayout>;
 };
 
 export default IngredientPage;
@@ -29,20 +24,9 @@ export const getServerSideProps: GetServerSideProps = async (
     return { notFound: true };
   }
 
-  const recipes: DataType[] = [];
-  const filePath = "public/data/TB_RECIPE_SEARCH.csv";
-
-  await new Promise((resolve, reject) => {
-    fs.createReadStream(filePath)
-      .pipe(csv())
-      .on("data", (data) => {
-        if (data.CKG_MTRL_ACTO_NM === ingredient) {
-          recipes.push(data);
-        }
-      })
-      .on("end", resolve)
-      .on("error", reject);
-  });
+  const recipes = await readCsvData(
+    (data) => data.CKG_MTRL_ACTO_NM === ingredient
+  );
 
   return { props: { recipes } };
 };
