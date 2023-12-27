@@ -1,7 +1,8 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useRef } from "react";
 import styles from "./ListContainer.module.css";
 import ListCard from "./ListCard";
 import { DataType } from "@/utils/types/DataType";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 interface ListContainerProps {
   openModal: (recipe: DataType) => void;
@@ -10,41 +11,20 @@ interface ListContainerProps {
 }
 
 const ListContainer: FC<ListContainerProps> = ({ openModal, recipes, openedModalId }) => {
-  const layoutRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (layoutRef.current) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add(styles.cardEmphasized);
-            } else {
-              entry.target.classList.remove(styles.cardEmphasized);
-            }
-          });
-        },
-        {
-          root: layoutRef.current.parentElement,
-          threshold: 0.5,
-        }
-      );
-
-      const cards = Array.from(
-        layoutRef.current.querySelectorAll(".Card_card__atjAU")
-      );
-      cards.forEach((card) => observer.observe(card as Element));
-
-      return () => {
-        cards.forEach((card) => observer.unobserve(card as Element));
-      };
+  useIntersectionObserver(containerRef, (entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add(styles.cardEmphasized);
+    } else {
+      entry.target.classList.remove(styles.cardEmphasized);
     }
-  }, []);
+  });
 
   return (
-    <div ref={layoutRef} className={styles.listContainer}>
+    <div ref={containerRef} className={styles.listContainer}>
       {recipes.map(recipe => (
-        <ListCard key={recipe.RCP_SNO} recipe={recipe} onClick={() => openModal(recipe)} isModalOpen={openedModalId === recipe.RCP_SNO}  />
+        <ListCard key={recipe.RCP_SNO} recipe={recipe} onClick={() => openModal(recipe)} isModalOpen={openedModalId === recipe.RCP_SNO} />
       ))}
     </div>
   );
