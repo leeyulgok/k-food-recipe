@@ -10,14 +10,20 @@ const SearchPage = ({ recipes }: { recipes: DataType[] }) => {
 
 export default SearchPage;
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const searchQuery = context.query.search as string;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const searchQuery = context.query.search as string | undefined;
 
+  if (!searchQuery) {
+    return { notFound: true };
+  }
+  
   const recipes = await readCsvData((data) =>
     data.CKG_NM.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (recipes.length === 0) {
+    return { notFound: true };
+  }
 
   return { props: { recipes } };
 };
