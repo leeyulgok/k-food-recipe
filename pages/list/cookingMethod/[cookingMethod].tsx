@@ -18,12 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const validCookingMethod = COOKING_METHOD.LIST
 
   if (!validCookingMethod.includes(cookingMethod as string)) {
-    return {
-      redirect: {
-        destination: '/error',
-        permanent: false,
-      },
-    };
+    return { notFound: true };
   }
 
   if (typeof cookingMethod !== "string") {

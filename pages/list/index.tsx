@@ -22,7 +22,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
 
   if (recipes.length === 0) {
-    return { notFound: true };
+    return {
+      redirect: {
+        destination: '/error',
+        permanent: false,
+      },
+    };
   }
 
   return { props: { recipes } };

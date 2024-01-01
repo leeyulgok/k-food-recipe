@@ -18,12 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (
   const validIngredient = INGREDIENT.LIST;
 
   if (!validIngredient.includes(ingredient as string)) {
-    return {
-      redirect: {
-        destination: '/error',
-        permanent: false,
-      },
-    };
+    return { notFound: true };
   }
 
   if (typeof ingredient !== "string") {
