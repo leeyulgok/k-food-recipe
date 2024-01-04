@@ -17,9 +17,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { notFound: true };
   }
   
-  const recipes = await readCsvData((data) =>
-    data.CKG_NM.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const res = await fetch(`http://localhost:3001/list?search=${searchQuery}`);
+  const recipes = await res.json();
 
   if (recipes.length === 0) {
     return {
