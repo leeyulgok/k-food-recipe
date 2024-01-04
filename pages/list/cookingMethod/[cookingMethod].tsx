@@ -25,9 +25,8 @@ export const getServerSideProps: GetServerSideProps = async (
     return { notFound: true };
   }
 
-  const recipes = await readCsvData(
-    (data) => data.CKG_MTH_ACTO_NM === cookingMethod
-  );
+  const res = await fetch(`http://localhost:3001/list/cookingMethod/${cookingMethod}`);
+  const recipes = await res.json();
 
   return { props: { recipes } };
 };
