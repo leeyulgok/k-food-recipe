@@ -1,4 +1,4 @@
-const pool = require('../../config/dbConfig');
+const pool = require('../../config/dbConfig.ts');
 const fs = require("fs");
 const csv = require("csv-parser");
 const path = require("path");

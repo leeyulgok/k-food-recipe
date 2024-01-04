@@ -17,9 +17,8 @@ export default function Home({ recipes }: {recipes: DataType[]}) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let recipes = await readCsvData();
+  const res = await fetch(`http://localhost:3001/`);
+  const recipes = await res.json();
 
-  recipes = recipes.sort((a, b) => b.INQ_CNT - a.INQ_CNT).slice(0, 4);
-  
   return { props: { recipes } };
 };
