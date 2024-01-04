@@ -1,7 +1,6 @@
 import React from "react";
-import { readCsvData } from "@/utils/func/readCsvData";
 import { DataType } from "@/utils/types/DataType";
-import { GetServerSidePropsContext, GetServerSideProps } from "next";
+import { GetServerSideProps } from "next";
 import ListPage from "@/components/list/ListPage";
 
 const SearchPage = ({ recipes }: { recipes: DataType[] }) => {

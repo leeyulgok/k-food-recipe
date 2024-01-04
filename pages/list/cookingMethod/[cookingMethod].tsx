@@ -1,7 +1,6 @@
 import React from "react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { DataType } from "@/utils/types/DataType";
-import { readCsvData } from "@/utils/func/readCsvData";
 import ListPage from "@/components/list/ListPage";
 import COOKING_METHOD from "@/utils/constants/cookingMethodList";
 

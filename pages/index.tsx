@@ -1,7 +1,6 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import { DataType } from '@/utils/types/DataType';
-import { readCsvData } from '@/utils/func/readCsvData';
 
 import HeroSection from '@/components/hero/HeroSection';
 import HERO_SECTION_LIST from "@/utils/constants/heroSectionList";
