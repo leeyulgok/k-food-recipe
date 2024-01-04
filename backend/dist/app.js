@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', MainRoutes);
 app.use('/list', searchRoutes);
-app.use('/list/ingredient', ingredientRoutes);
-app.use('/list/cookingMethod', cookingMethodRoutes);
+app.use('/list/ingredient/', ingredientRoutes);
+app.use('/list/cookingMethod/', cookingMethodRoutes);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

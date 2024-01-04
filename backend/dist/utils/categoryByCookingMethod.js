@@ -13,8 +13,8 @@ const pool = require('../config/dbConfig');
 function categoryByCookingMethod(cookingMethod) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const query = "SELECT * FROM recipes WHERE CKG_MTRL_ACTO_NM=(?)";
-            const [rows] = yield pool.query(query, [`%${cookingMethod}%`]);
+            const query = "SELECT * FROM recipes WHERE CKG_MTH_ACTO_NM=?";
+            const [rows] = yield pool.query(query, [`${cookingMethod}`]);
             return rows;
         }
         catch (error) {
