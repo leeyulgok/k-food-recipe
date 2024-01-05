@@ -1,6 +1,7 @@
 .searchBarContainer {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .buttonContainer {
@@ -30,7 +31,7 @@
 .searchInput {
   background-color: #f3f3f3;
   border: 2px solid #e2e2e2;
-  border-right: none; 
+  border-right: none;
   border-top-left-radius: 9999px;
   border-bottom-left-radius: 9999px;
   padding: 8px 16px;
@@ -47,8 +48,8 @@
 .searchSubmitButton {
   background-color: #ff5555;
   color: white;
-  border: 2px solid #ff5555; 
-  border-left: none; 
+  border: 2px solid #ff5555;
+  border-left: none;
   padding: 8px 16px;
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
@@ -58,4 +59,27 @@
 
 .searchSubmitButton:hover {
   background-color: #e24444;
+}
+
+.searchResultsContainer {
+  position: absolute;
+  top: 100%;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+.searchResultItem {
+  padding: 10px;
+  border-bottom: 1px solid #e2e2e2;
+  text-align: center;
+  justify-self: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

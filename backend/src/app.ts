@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const MainRoutes = require('./routes/index');
 const searchRoutes = require('./routes/searchRoutes');
 const ingredientRoutes = require('./routes/ingredientRoutes');
 const cookingMethodRoutes = require('./routes/cookingMethodRoutes');
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
