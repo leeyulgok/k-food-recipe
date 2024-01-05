@@ -24,21 +24,23 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
 
   return (
     <Card>
-      <div className={styles.recipeCardHeader}>
-        <div className={styles.headerBox}>
-          <div className={styles.recipeNumber}>#{RCP_SNO}</div>
-          <h2 className={styles.recipeTitle}>{`${CKG_NM} (${CKG_NM_KO})`}</h2>
+      <div className={styles.recipeCard}>
+        <div className={styles.recipeCardHeader}>
+          <div className={styles.headerBox}>
+            <div className={styles.recipeNumber}>#{RCP_SNO}</div>
+            <h2 className={styles.recipeTitle}>{`${CKG_NM} (${CKG_NM_KO})`}</h2>
+          </div>
+          <div className={styles.recipeDetails}>
+            <Badge text={CKG_MTH_ACTO_NM} />
+            <Badge text={CKG_STA_ACTO_NM} />
+            <Badge text={CKG_INBUN_NM} />
+            <Badge text={CKG_DODF_NM} />
+            <Badge text={CKG_TIME_NM} />
+          </div>
         </div>
-        <div className={styles.recipeDetails}>
-          <Badge text={CKG_MTH_ACTO_NM} />
-          <Badge text={CKG_STA_ACTO_NM} />
-          <Badge text={CKG_INBUN_NM} />
-          <Badge text={CKG_DODF_NM} />
-          <Badge text={CKG_TIME_NM} />
+        <div>
+          <Video youtubeId={Y_ID} />
         </div>
-      </div>
-      <div>
-        <Video youtubeId={Y_ID} />
       </div>
     </Card>
   );
