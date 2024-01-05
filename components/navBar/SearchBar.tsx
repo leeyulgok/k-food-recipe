@@ -9,6 +9,8 @@ import styles from "./SearchBar.module.css";
 import AnimateWidth from "../animate/AnimateWidth";
 import AnimateFade from "../animate/AnimateFade";
 import { DataType } from "@/utils/types/DataType";
+import Thumbnail from "../common/Thumbnail";
+import Card from "../common/Card";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -80,7 +82,15 @@ const SearchBar = () => {
         <div className={styles.searchResultsContainer}>
           {searchResult ? (
             <div className={styles.searchResultItem}>
-              {searchResult.CKG_NM}
+              <div className={styles.searchResultBox}>
+                <div className={styles.searchResultThumbnail}>
+                  <Thumbnail youtubeId={searchResult.Y_ID}/>
+                </div>
+                <div className={styles.searchResultTitle}>
+                  <h2>{searchResult.CKG_NM}</h2>
+                  <h3>{searchResult.CKG_NM_KO}</h3>
+                </div>
+              </div>
             </div>
           ) : (
             <div className={styles.searchResultItem}>검색 결과가 없습니다</div>
