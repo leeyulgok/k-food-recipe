@@ -10,7 +10,9 @@ import AnimateWidth from "../animate/AnimateWidth";
 import AnimateFade from "../animate/AnimateFade";
 import { DataType } from "@/utils/types/DataType";
 import Thumbnail from "../common/Thumbnail";
-import Card from "../common/Card";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/app/redux/feature/modalSlice";
+import DetailModal from "../modal/DetailModal";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,11 +20,16 @@ const SearchBar = () => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchResult, setSearchResult] = useState<DataType | null>(null);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleSearch = () => {
     if (searchQuery) {
       router.push(`/list?search=${encodeURIComponent(searchQuery)}`);
     }
+  };
+
+  const handleClick = (recipe: DataType) => {
+    dispatch(openModal(recipe));
   };
 
   const handleFocus = () => {
@@ -71,7 +78,7 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={handleFocus}
-            onBlur={handleBlur}
+            // onBlur={handleBlur}
             />
             <button className={styles.searchSubmitButton} onClick={handleSearch}>
               Search
@@ -81,7 +88,7 @@ const SearchBar = () => {
       {isSearch && (
         <div className={styles.searchResultsContainer}>
           {searchResult ? (
-            <div className={styles.searchResultItem}>
+            <div className={styles.searchResultItem} onClick={() => handleClick(searchResult)}>
               <div className={styles.searchResultBox}>
                 <div className={styles.searchResultThumbnail}>
                   <Thumbnail youtubeId={searchResult.Y_ID}/>
@@ -97,6 +104,7 @@ const SearchBar = () => {
           )}
         </div>
       )}
+      <DetailModal />
     </div>
   );
 };
