@@ -1,4 +1,6 @@
 import React, { FC, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { openModal } from "@/app/redux/feature/modalSlice";
 import { DataType } from "@/utils/types/DataType";
 import Card from "../common/Card";
 import styles from "./ListCard.module.css";
@@ -8,28 +10,44 @@ import { DETAIL_MODAL_INFO } from "@/utils/constants/default";
 
 interface ListCardProps {
   recipe: DataType;
-  onClick: (recipe: DataType) => void;
-  isModalOpen: boolean;
 }
 
-const ListCard: FC<ListCardProps> = ({ recipe, onClick, isModalOpen }) => {
+const ListCard: FC<ListCardProps> = ({ recipe }) => {
+  const dispatch = useDispatch();
   const cardRef = useRef<HTMLDivElement>(null);
 
   const {
-    RCP_SNO, CKG_NM, CKG_NM_KO, RGTR_NM, CKG_MTH_ACTO_NM, CKG_STA_ACTO_NM,
-    INQ_CNT, CKG_INBUN_NM, CKG_DODF_NM, CKG_TIME_NM, Y_ID
+    RCP_SNO,
+    CKG_NM,
+    CKG_NM_KO,
+    RGTR_NM,
+    CKG_MTH_ACTO_NM,
+    CKG_STA_ACTO_NM,
+    INQ_CNT,
+    CKG_INBUN_NM,
+    CKG_DODF_NM,
+    CKG_TIME_NM,
+    Y_ID,
   } = recipe;
 
+  const handleClick = () => {
+    dispatch(openModal(recipe));
+  };
+
   return (
-    <Card ref={cardRef} onClick={() => onClick(recipe)} isModalOpen={isModalOpen}>
+    <Card ref={cardRef} onClick={handleClick}>
       <div className={styles.listCard}>
         <div className={styles.thumbnailContainer}>
           <Thumbnail youtubeId={Y_ID} />
         </div>
         <div className={styles.recipeCardHeader}>
           <div className={styles.headerBox}>
-            <div className={styles.recipeNumber}>#{RCP_SNO} / {RGTR_NM}</div>
-            <div className={styles.recipeNumber}>{DETAIL_MODAL_INFO.VIEWS} : {INQ_CNT}</div>
+            <div className={styles.recipeNumber}>
+              #{RCP_SNO} / {RGTR_NM}
+            </div>
+            <div className={styles.recipeNumber}>
+              {DETAIL_MODAL_INFO.VIEWS} : {INQ_CNT}
+            </div>
             <div className={styles.titleBox}>
               <h2 className={styles.recipeTitleEn}>{CKG_NM}</h2>
               <h3 className={styles.recipeTitleKo}>({CKG_NM_KO})</h3>

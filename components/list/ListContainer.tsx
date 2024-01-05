@@ -5,12 +5,10 @@ import { DataType } from "@/utils/types/DataType";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 interface ListContainerProps {
-  openModal: (recipe: DataType) => void;
   recipes: DataType[];
-  openedModalId: number | null;
 }
 
-const ListContainer: FC<ListContainerProps> = ({ openModal, recipes, openedModalId }) => {
+const ListContainer: FC<ListContainerProps> = ({ recipes }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useIntersectionObserver(containerRef, (entry) => {
@@ -24,7 +22,7 @@ const ListContainer: FC<ListContainerProps> = ({ openModal, recipes, openedModal
   return (
     <div ref={containerRef} className={styles.listContainer}>
       {recipes.map(recipe => (
-        <ListCard key={recipe.RCP_SNO} recipe={recipe} onClick={() => openModal(recipe)} isModalOpen={openedModalId === recipe.RCP_SNO} />
+        <ListCard key={recipe.RCP_SNO} recipe={recipe} />
       ))}
     </div>
   );

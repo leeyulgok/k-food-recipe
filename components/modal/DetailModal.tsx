@@ -1,19 +1,19 @@
 import React, { FC } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { closeModal } from "@/app/redux/feature/modalSlice";
 import styles from "./DetailModal.module.css";
-import { DataType } from "@/utils/types/DataType";
 import Video from "../common/Video";
 import Card from "../common/Card";
 import BadgeContainer from "./BadgeContainer";
 import InfoBox from "./InfoBox";
+import { RootState } from '@/app/redux/store'; 
 import { INGREDIENT, EXPLANATION, DETAIL_MODAL_INFO } from "@/utils/constants/default";
 
-interface DetailModalProps {
-  recipe: DataType | null;
-  closeModal: () => void;
-}
+const DetailModal: FC = () => {
+  const { isVisible, recipe } = useSelector((state: RootState) => state.modal);
+  const dispatch = useDispatch();
 
-const DetailModal: FC<DetailModalProps> = ({ recipe, closeModal }) => {
-  if (!recipe) return null;
+  if (!isVisible || !recipe) return null;
 
   const {
     RCP_SNO, CKG_NM, CKG_NM_KO, RGTR_NM, INQ_CNT, RCMM_CNT, SRAP_CNT,
@@ -31,14 +31,18 @@ const DetailModal: FC<DetailModalProps> = ({ recipe, closeModal }) => {
     CKG_TIME_NM
   ];
 
+  const handleCloseModal = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <div className={styles.modalBackground} onClick={closeModal}>
+    <div className={styles.modalBackground} onClick={handleCloseModal}>
       <Card>
         <div
           className={styles.modalContainer}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className={styles.modalCloseBtn} onClick={closeModal}>
+          <div className={styles.modalCloseBtn} onClick={handleCloseModal}>
             ×
           </div>
           <div className={styles.modalContent}>
