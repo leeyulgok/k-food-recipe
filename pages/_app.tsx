@@ -1,7 +1,8 @@
-import '../app/globals.css'
-import RootLayout from '../app/layout'
-import DataProvider from '../contexts/DataProvider';
-import Head from 'next/head';
+import "../app/globals.css";
+import RootLayout from "../app/layout";
+import { Provider } from "react-redux";
+import { store } from "../app/redux/store";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: any) {
   return (
@@ -9,13 +10,13 @@ function MyApp({ Component, pageProps }: any) {
       <Head>
         <title>How to Make K-Food?</title>
       </Head>
-      <DataProvider>
+      <Provider store={store}>
         <RootLayout>
           <Component {...pageProps} />
         </RootLayout>
-      </DataProvider>
+      </Provider>
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
