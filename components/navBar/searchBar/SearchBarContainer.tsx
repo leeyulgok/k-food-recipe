@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client"
+
 import SearchBar from "./SearchBar";
 import useSearch from "@/hooks/useSearch";
 

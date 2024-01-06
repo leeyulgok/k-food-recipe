@@ -6,8 +6,14 @@ async function getsearchRecipes(searchQuery: string) {
       SELECT * FROM recipes
       WHERE LOWER(CKG_NM) LIKE LOWER(?)
          OR LOWER(CKG_NM_KO) LIKE LOWER(?)`;
-    const formattedSearchQuery = `%${searchQuery}%`;
-    const [rows] = await pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+    let formattedSearchQuery = `${searchQuery}%`;
+    let [rows] = await pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+
+    if (rows.length === 0) {
+      formattedSearchQuery = `%${searchQuery}%`;
+      [rows] = await pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+    }
+
     return rows;
   } catch (error) {
     console.error('Error during the database query:', error);
