@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import debounce from 'lodash/debounce';
 import Image from "next/image";
@@ -19,12 +19,23 @@ const SearchBar = () => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [searchResult, setSearchResult] = useState<DataType | null>(null);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const dispatch = useDispatch();
 
   const handleSearch = () => {
     if (searchQuery) {
       router.push(`/list?search=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
+    }
+  };
+
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newQuery = event.target.value;
+    setSearchQuery(newQuery);
+  
+    if (!newQuery) {
+      setSearchResult(null);
     }
   };
 
@@ -36,24 +47,35 @@ const SearchBar = () => {
     setIsSearch(true);
   };
 
-  const handleBlur = () => {
-    setIsSearch(false);
-  };
-
   const handleSearchButton = () => {
     setIsSearch(false);
     setInputVisible(!isInputVisible);
   }
 
-  const debouncedSearch = useCallback(debounce(async (query: string, searchType = "dynamic") => {
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsSearch(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);  
+
+  const debouncedSearch = useCallback(debounce(async (query: string) => {
     if (query) {
       try {
-        const response = await fetch(`http://localhost:3001/list?search=${encodeURIComponent(query)}&type=${searchType}`);
+        const response = await fetch(`http://localhost:3001/list?search=${encodeURIComponent(query)}&type=dynamic`);
         const data = await response.json();
         setSearchResult(data[0]);
       } catch (error) {
         console.error("Search request failed:", error);
       }
+    } else {
+      setSearchResult(null);
     }
   }, 300), []);
 
@@ -62,7 +84,7 @@ const SearchBar = () => {
   }, [searchQuery, debouncedSearch]);
 
   return (
-    <div className={styles.searchBarContainer}>
+    <div ref={searchContainerRef} className={styles.searchBarContainer}>
       <AnimateWidth isOpen={isInputVisible} className={styles.buttonContainer}>
         <button
           className={styles.searchButton}
@@ -76,9 +98,8 @@ const SearchBar = () => {
             className={styles.searchInput}
             placeholder="Search..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
             onFocus={handleFocus}
-            // onBlur={handleBlur}
             />
             <button className={styles.searchSubmitButton} onClick={handleSearch}>
               Search
