@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect } from 'react';
 import useSearchQuery from './useSearchQuery';
 import useSearchAPI from './useSearchAPI';
