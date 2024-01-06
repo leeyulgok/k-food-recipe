@@ -1,0 +1,27 @@
+.searchResultsContainer {
+    position: absolute;
+    top: 100%;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+    border-radius: 10px;
+  }
+  
+  .searchResultItem {
+    padding: 10px;
+    border-bottom: 1px solid #e2e2e2;
+    text-align: center;
+    justify-self: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .searchResultBox {
+    width: 100%;
+    cursor: pointer;
+  }

@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import styles from "./NavBar.module.css";
 import dynamic from "next/dynamic";
 
-const DynamicSearchBar = dynamic(() => import('./SearchBar'), { ssr: false });
+const DynamicSearchBar = dynamic(() => import('./searchBar/SearchBarContainer'), { ssr: false });
 
 const NavBar = () => {
   return (
