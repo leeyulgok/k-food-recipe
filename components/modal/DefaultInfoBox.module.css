@@ -1,0 +1,11 @@
+.defaultInfoBox {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.descriptionBox p {
+  font-size: 1.2rem;
+}

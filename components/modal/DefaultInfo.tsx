@@ -5,6 +5,7 @@ import View from "../icons/View";
 import EmptyLike from "../icons/EmptyLike";
 import EmptyStar from "../icons/EmptyStar";
 import { formatNumber } from "@/utils/func/numberFormat";
+import DefaultInfoBox from "./DefaultInfoBox";
 
 interface DefaultInfoProps {
   writer: string;
@@ -16,30 +17,10 @@ interface DefaultInfoProps {
 const DefaultInfo: FC<DefaultInfoProps> = ({ writer, views, likes, scraps}) => {
   return (
     <div className={styles.defaultInfoContainer}>
-      <div className={styles.defaultInfoBox}>
-        <User />
-        <div className={styles.descriptionBox}>
-          <p>{writer}</p>
-        </div>
-      </div>
-      <div className={styles.defaultInfoBox}>
-        <View />
-        <div className={styles.descriptionBox}>
-          <p>{formatNumber(views)}</p>
-        </div>
-      </div>
-      <div className={styles.defaultInfoBox}>
-        <EmptyLike />
-        <div className={styles.descriptionBox}>
-          <p>{formatNumber(likes)}</p>
-        </div>
-      </div>
-      <div className={styles.defaultInfoBox}>
-        <EmptyStar />
-        <div className={styles.descriptionBox}>
-          <p>{formatNumber(scraps)}</p>
-        </div>
-      </div>
+      <DefaultInfoBox icon={<User />} text={writer} />
+      <DefaultInfoBox icon={<View />} text={formatNumber(views)} />
+      <DefaultInfoBox icon={<EmptyLike />} text={formatNumber(likes)} />
+      <DefaultInfoBox icon={<EmptyStar />} text={formatNumber(scraps)} />
     </div>
   );
 };
