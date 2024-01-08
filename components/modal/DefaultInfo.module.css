@@ -1,0 +1,21 @@
+.defaultInfoContainer {
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.defaultInfoBox {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.descriptionBox p {
+  font-size: 1.2rem;
+}

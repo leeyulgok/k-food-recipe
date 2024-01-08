@@ -3,7 +3,7 @@ export const POPULAR_VIEWS = "Popular views";
 export const INGREDIENT = "Ingredient";
 export const EXPLANATION = "Explanation";
 export const DETAIL_MODAL_INFO = {
-  WRITTER: "writter",
+  WRITER: "writer",
   VIEWS: "views",
   RECOMMENDATIONS: "recommendations",
   SCRAPS: "scraps",

@@ -7,8 +7,8 @@ import Card from "../common/Card";
 import BadgeContainer from "./BadgeContainer";
 import InfoBox from "./InfoBox";
 import { RootState } from '@/app/redux/store'; 
-import { INGREDIENT, EXPLANATION, DETAIL_MODAL_INFO } from "@/utils/constants/default";
-import { formatNumber } from "@/utils/func/numberFormat";
+import { INGREDIENT, EXPLANATION } from "@/utils/constants/default";
+import DefaultInfo from "./DefaultInfo";
 
 const DetailModal: FC = () => {
   const { isVisible, recipe } = useSelector((state: RootState) => state.modal);
@@ -59,12 +59,7 @@ const DetailModal: FC = () => {
                 <h2 className={styles.title}>
                   {CKG_NM} ({CKG_NM_KO})
                 </h2>
-                <div className={styles.defaultInfo}>
-                  <p>{DETAIL_MODAL_INFO.WRITTER} : {RGTR_NM}</p>
-                  <p>{DETAIL_MODAL_INFO.VIEWS} : {formatNumber(INQ_CNT)}</p>
-                  <p>{DETAIL_MODAL_INFO.RECOMMENDATIONS} : {formatNumber(RCMM_CNT)}</p>
-                  <p>{DETAIL_MODAL_INFO.SCRAPS} : {formatNumber(SRAP_CNT)}</p>
-                </div>
+                <DefaultInfo writer={RGTR_NM} views={INQ_CNT} likes={RCMM_CNT} scraps={SRAP_CNT} />
               </div>
             </div>
             <div className={styles.detailsContainer}>
