@@ -8,6 +8,7 @@ import BadgeContainer from "./BadgeContainer";
 import InfoBox from "./InfoBox";
 import { RootState } from '@/app/redux/store'; 
 import { INGREDIENT, EXPLANATION, DETAIL_MODAL_INFO } from "@/utils/constants/default";
+import { formatNumber } from "@/utils/func/numberFormat";
 
 const DetailModal: FC = () => {
   const { isVisible, recipe } = useSelector((state: RootState) => state.modal);
@@ -60,9 +61,9 @@ const DetailModal: FC = () => {
                 </h2>
                 <div className={styles.defaultInfo}>
                   <p>{DETAIL_MODAL_INFO.WRITTER} : {RGTR_NM}</p>
-                  <p>{DETAIL_MODAL_INFO.VIEWS} : {INQ_CNT}</p>
-                  <p>{DETAIL_MODAL_INFO.RECOMMENDATIONS} : {RCMM_CNT}</p>
-                  <p>{DETAIL_MODAL_INFO.SCRAPS} : {SRAP_CNT}</p>
+                  <p>{DETAIL_MODAL_INFO.VIEWS} : {formatNumber(INQ_CNT)}</p>
+                  <p>{DETAIL_MODAL_INFO.RECOMMENDATIONS} : {formatNumber(RCMM_CNT)}</p>
+                  <p>{DETAIL_MODAL_INFO.SCRAPS} : {formatNumber(SRAP_CNT)}</p>
                 </div>
               </div>
             </div>

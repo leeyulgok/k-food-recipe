@@ -5,6 +5,7 @@ import styles from "./ListCard.module.css";
 import Badge from "../common/Badge";
 import Thumbnail from "../common/Thumbnail";
 import { DETAIL_MODAL_INFO } from "@/utils/constants/default";
+import { formatNumber } from "@/utils/func/numberFormat";
 
 interface ListCardProps {
   recipe: DataType;
@@ -40,7 +41,7 @@ const ListCard: FC<ListCardProps> = ({ recipe, handleClick }) => {
               #{RCP_SNO} / {RGTR_NM}
             </div>
             <div className={styles.recipeNumber}>
-              {DETAIL_MODAL_INFO.VIEWS} : {INQ_CNT}
+              {DETAIL_MODAL_INFO.VIEWS} : {formatNumber(INQ_CNT)}
             </div>
             <div className={styles.titleBox}>
               <h2 className={styles.recipeTitleEn}>{CKG_NM}</h2>
