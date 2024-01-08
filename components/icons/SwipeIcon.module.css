@@ -1,0 +1,28 @@
+.swipeIcon {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: swipeAnimation 1.5s ease-in-out infinite;
+}
+
+.swipeIcon.left {
+  left: 10px;
+  padding: 0 5%;
+  animation-direction: alternate;
+}
+
+.swipeIcon.right {
+  right: 10px;
+  padding: 0 5%;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes swipeAnimation {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
