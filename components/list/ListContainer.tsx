@@ -3,6 +3,7 @@ import styles from "./ListContainer.module.css";
 import ListCard from "./ListCard";
 import { DataType } from "@/utils/types/DataType";
 import useIntersectionObserver from "../../hooks/useIntersectionObserver";
+import useSearch from "@/hooks/useSearch";
 
 interface ListContainerProps {
   recipes: DataType[];
@@ -10,6 +11,7 @@ interface ListContainerProps {
 
 const ListContainer: FC<ListContainerProps> = ({ recipes }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { handleClick } = useSearch();
 
   useIntersectionObserver(containerRef, (entry) => {
     if (entry.isIntersecting) {
@@ -22,7 +24,7 @@ const ListContainer: FC<ListContainerProps> = ({ recipes }) => {
   return (
     <div ref={containerRef} className={styles.listContainer}>
       {recipes.map(recipe => (
-        <ListCard key={recipe.RCP_SNO} recipe={recipe} />
+        <ListCard key={recipe.RCP_SNO} recipe={recipe} handleClick={handleClick}/>
       ))}
     </div>
   );

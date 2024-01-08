@@ -27,7 +27,7 @@ const SearchResult: FC<SearchResultProps> = ({ searchResult, handleClick }) => {
           </div>
         </div>
       ) : (
-        <div className={styles.searchResultItem}>검색 결과가 없습니다</div>
+        <div className={styles.searchResultItem}>No search results</div>
       )}
     </div>
   );

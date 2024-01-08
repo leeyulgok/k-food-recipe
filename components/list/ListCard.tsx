@@ -1,6 +1,4 @@
 import React, { FC, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/app/redux/feature/modalSlice";
 import { DataType } from "@/utils/types/DataType";
 import Card from "../common/Card";
 import styles from "./ListCard.module.css";
@@ -10,10 +8,10 @@ import { DETAIL_MODAL_INFO } from "@/utils/constants/default";
 
 interface ListCardProps {
   recipe: DataType;
+  handleClick: (recipe: DataType) => void;
 }
 
-const ListCard: FC<ListCardProps> = ({ recipe }) => {
-  const dispatch = useDispatch();
+const ListCard: FC<ListCardProps> = ({ recipe, handleClick }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -30,12 +28,8 @@ const ListCard: FC<ListCardProps> = ({ recipe }) => {
     Y_ID,
   } = recipe;
 
-  const handleClick = () => {
-    dispatch(openModal(recipe));
-  };
-
   return (
-    <Card ref={cardRef} onClick={handleClick}>
+    <Card ref={cardRef} onClick={() => handleClick(recipe)}>
       <div className={styles.listCard}>
         <div className={styles.thumbnailContainer}>
           <Thumbnail youtubeId={Y_ID} />

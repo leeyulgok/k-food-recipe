@@ -14,7 +14,7 @@ const useSearch = () => {
   const { searchResult, debouncedSearch } = useSearchAPI();
   const { isSearch, setIsSearch, searchContainerRef } = useSearchUI();
   const { handleSearch } = useSearchInteraction(searchQuery, setSearchQuery, setIsSearch);
-  const { isInputVisible, handleSearchButton } = useInputVisibility();
+  const { isInputVisible, handleSearchButton } = useInputVisibility(setIsSearch);
   const { handleClick } = useReduxActions();
   const { handleFocus } = useSearchFocus(setIsSearch);
 

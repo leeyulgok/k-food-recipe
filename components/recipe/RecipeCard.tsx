@@ -7,9 +7,10 @@ import Video from "../common/Video";
 
 interface RecipeCardProps {
   recipe: DataType;
+  handleClick: (recipe: DataType) => void;
 }
 
-const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
+const RecipeCard: FC<RecipeCardProps> = ({ recipe, handleClick }) => {
   const {
     RCP_SNO,
     CKG_NM,
@@ -24,7 +25,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
 
   return (
     <Card>
-      <div className={styles.recipeCard}>
+      <div className={styles.recipeCard} onClick={() => handleClick(recipe)}>
         <div className={styles.recipeCardHeader}>
           <div className={styles.headerBox}>
             <div className={styles.recipeNumber}>#{RCP_SNO}</div>
