@@ -9,30 +9,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getSearchRecipes = require("../utils/getSearchRecipes");
-const getRealTimeSearchResult = require('../utils/getRealTimeSearchResult');
-function searchController(req, res) {
+const pool = require('../config/dbConfig');
+function getRealTimeSearchResult(searchQuery) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const searchQuery = req.query.search;
-            const searchType = req.query.type;
-            let recipes;
-            if (searchType === 'dynamic') {
-                recipes = yield getRealTimeSearchResult(searchQuery);
+            let query = `
+      SELECT * FROM recipes
+      WHERE LOWER(CKG_NM) LIKE LOWER(?)
+         OR LOWER(CKG_NM_KO) LIKE LOWER(?)
+      LIMIT 1`;
+            let formattedSearchQuery = `${searchQuery}%`;
+            let [rows] = yield pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+            if (rows.length === 0) {
+                formattedSearchQuery = `%${searchQuery}%`;
+                [rows] = yield pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
             }
-            else {
-                recipes = yield getSearchRecipes(searchQuery);
-            }
-            res.json(recipes);
+            return rows;
         }
         catch (error) {
-            if (error instanceof Error) {
-                res.status(500).json({ message: error.message });
-            }
-            else {
-                res.status(500).json({ message: "알 수 없는 오류 발생" });
-            }
+            console.error('Error during the database query:', error);
+            throw error;
         }
     });
 }
-module.exports = searchController;
+module.exports = getRealTimeSearchResult;

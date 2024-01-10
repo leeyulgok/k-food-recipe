@@ -13,8 +13,16 @@ const pool = require('../config/dbConfig');
 function getsearchRecipes(searchQuery) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const query = "SELECT * FROM recipes WHERE LOWER(CKG_NM) LIKE LOWER(?)";
-            const [rows] = yield pool.query(query, [`%${searchQuery}%`]);
+            const query = `
+      SELECT * FROM recipes
+      WHERE LOWER(CKG_NM) LIKE LOWER(?)
+         OR LOWER(CKG_NM_KO) LIKE LOWER(?)`;
+            let formattedSearchQuery = `${searchQuery}%`;
+            let [rows] = yield pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+            if (rows.length === 0) {
+                formattedSearchQuery = `%${searchQuery}%`;
+                [rows] = yield pool.query(query, [formattedSearchQuery, formattedSearchQuery]);
+            }
             return rows;
         }
         catch (error) {
