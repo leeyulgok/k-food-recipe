@@ -9,6 +9,7 @@ import InfoBox from "./InfoBox";
 import { RootState } from '@/app/redux/store'; 
 import { INGREDIENT, EXPLANATION } from "@/utils/constants/default";
 import DefaultInfo from "./DefaultInfo";
+import Xmark from "../icons/Xmark";
 
 const DetailModal: FC = () => {
   const { isVisible, recipe } = useSelector((state: RootState) => state.modal);
@@ -44,7 +45,7 @@ const DetailModal: FC = () => {
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.modalCloseBtn} onClick={handleCloseModal}>
-            ×
+            <Xmark />
           </div>
           <div className={styles.modalContent}>
             <div className={styles.mainContainer}>

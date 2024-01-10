@@ -19,10 +19,8 @@
 .modalCloseBtn {
   top: 10px;
   right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #8b0000;
+  display: flex;
+  justify-content: right;
 }
 
 @keyframes fadeIn {
