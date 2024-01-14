@@ -7,7 +7,9 @@ const SignupContainer = () => {
       <div className={styles.signupBox}>
         <h2>Sign up</h2>
         <div className={styles.signupButtonBox}>
-          <SignupButton />
+          <a href="http://localhost:3001/auth/google">
+            <SignupButton />
+          </a>
         </div>
       </div>
     </main>

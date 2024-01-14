@@ -1,10 +1,18 @@
 const express = require('express');
-const app = express();
+const session = require('express-session');
 const cors = require('cors');
+const passport = require('./utils/passport');
 const MainRoutes = require('./routes/index');
 const searchRoutes = require('./routes/searchRoutes');
 const ingredientRoutes = require('./routes/ingredientRoutes');
 const cookingMethodRoutes = require('./routes/cookingMethodRoutes');
+const authRoutes = require('./routes/authRoutes');
+const singupRoutes = require("./routes/signupRoutes");
+
+import { AuthenticateCallback } from "passport";
+import { UserType } from "./utils/types/UserType";
+
+const app = express();
 
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -15,10 +23,30 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+  secret: 'my-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user: UserType, done: AuthenticateCallback) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id: number, done: AuthenticateCallback) => {
+  const user = { id: id };
+  done(null, user);
+});
+
 app.use('/', MainRoutes);
 app.use('/list', searchRoutes);
 app.use('/list/ingredient/', ingredientRoutes);
 app.use('/list/cookingMethod/', cookingMethodRoutes);
+app.use('/auth/google/', authRoutes);
+app.use(singupRoutes);
 
 const PORT = process.env.PORT || 3001;
 
