@@ -20,7 +20,7 @@ const FailureContainer = () => {
             Unfortunately, you didn't succeed in signing up 
           </h1>
           <div>
-            <button onClick={handleSignup}>
+            <button className={styles.signupButton} onClick={handleSignup}>
               Sign up
             </button>
           </div>

@@ -20,7 +20,7 @@ const SuccessContainer = () => {
             Congratulations! You have successfully signed up.
           </h1>
           <div>
-            <button onClick={handleLogin}>
+            <button className={styles.loginButton} onClick={handleLogin}>
               Login
             </button>
           </div>

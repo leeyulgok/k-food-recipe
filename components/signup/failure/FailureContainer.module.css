@@ -21,3 +21,33 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+.signupButton {
+  background-color: #0000f3;
+  color: ivory;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
+  box-shadow: 0 4px 14px 0 rgba(0, 255, 60, 0.39);
+  margin-top: 20px;
+}
+
+.signupButton:hover {
+  background-color: #0f00b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+}
+
+.signupButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(0, 118, 255, 0.2);
+}
+
+.signupButton:focus {
+  border: 2px solid #0009b3;
+}
