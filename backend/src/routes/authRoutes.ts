@@ -6,8 +6,8 @@ router.get('/', passport.authenticate('google', { scope: ['profile', 'email'] })
 
 router.get('/callback', 
   passport.authenticate('google', {
-    successRedirect: '/signup-success',
-    failureRedirect: '/signup-fail'
+    successRedirect: 'http://localhost:3000/signup/success',
+    failureRedirect: 'http://localhost:3000/signup/failure'
   })
 );
 
