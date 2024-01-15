@@ -1,8 +1,8 @@
 import AnimateDraw from "../animate/AnimateDraw";
 import { motion } from "framer-motion";
 
-const Check = () => {
-  const checkVariants = {
+const Failed = () => {
+  const xVariants = {
     hidden: { pathLength: 0, opacity: 0 },
     visible: {
       pathLength: 1,
@@ -13,17 +13,25 @@ const Check = () => {
       },
     },
   };
+  
   return (
-    <AnimateDraw color={"green"}>
+    <AnimateDraw color={"red"}>
       <motion.path
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
-        d="M12,26 L22,36 L42,16"
-        variants={checkVariants}
+        d="M16,16 L36,36"
+        variants={xVariants}
+      />
+      <motion.path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        d="M36,16 L16,36"
+        variants={xVariants}
       />
     </AnimateDraw>
   );
 };
 
-export default Check;
+export default Failed;

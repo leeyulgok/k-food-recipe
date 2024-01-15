@@ -2,10 +2,11 @@ import { FC, ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface AnimateDrawProps {
+  color: string;
   children: ReactNode;
 }
 
-const AnimateDraw: FC<AnimateDrawProps> = ({ children }) => {
+const AnimateDraw: FC<AnimateDrawProps> = ({ color, children }) => {
   const circleVariants = {
     hidden: { strokeDashoffset: 100, opacity: 0 },
     visible: {
@@ -18,18 +19,6 @@ const AnimateDraw: FC<AnimateDrawProps> = ({ children }) => {
     },
   };
 
-  const checkVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        delay: 1,
-        duration: 1,
-      },
-    },
-  };
-
   return (
     <motion.div initial="hidden" animate="visible">
       <motion.svg
@@ -38,7 +27,7 @@ const AnimateDraw: FC<AnimateDrawProps> = ({ children }) => {
         xmlns="http://www.w3.org/2000/svg"
         width="100"
         height="100"
-        color="green"
+        color={color}
         viewBox="0 0 52 52"
       >
         <motion.circle
@@ -50,13 +39,6 @@ const AnimateDraw: FC<AnimateDrawProps> = ({ children }) => {
           strokeWidth="2"
           strokeDasharray="157"
           variants={circleVariants}
-        />
-        <motion.path
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          d="M12,26 L22,36 L42,16"
-          variants={checkVariants}
         />
         {children}
       </motion.svg>

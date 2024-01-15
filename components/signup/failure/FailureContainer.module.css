@@ -1,0 +1,23 @@
+.failureContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+
+.failureBox {
+  text-align: center;
+}
+
+.checkIcon {
+  margin: 20px 0;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+}
+
+.failureTitle {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
