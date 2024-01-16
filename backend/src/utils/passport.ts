@@ -1,5 +1,6 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import passport from 'passport';
+import { generateJWT } from './jwt';
 const pool = require("../config/dbConfig");
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || 'your-google-client-id';
@@ -22,10 +23,12 @@ passport.use(
         const [user] = await pool.query(`SELECT * FROM users WHERE google_id = ?`, [googleId]);
 
         if (user.length > 0) {
-          return done(null, false, { message: 'User already exists' });
+          const token = generateJWT("failure", false);
+          return done(null, false, { message: 'User already exists', token: token});
         } else {
           await pool.query(`INSERT INTO users (google_id, email, name) VALUES (?, ?, ?)`, [googleId, email, name]);
-          return done(null, { id: googleId, email, name });
+          const token = generateJWT(googleId, true);
+          return done(null, { id: googleId, email, name, token: token });
         }
       } catch (error) {
         console.error("Error in Google Strategy:", error);

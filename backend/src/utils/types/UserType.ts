@@ -5,4 +5,5 @@ export interface UserType {
   name: string | null;
   created_at: Date;
   last_login: Date;
+  token: string;
 }
