@@ -34,8 +34,11 @@ router.get(
   (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate("google-login", { session: false }, (err: Error, user: UserType, info: any) => {
       if (!user) {
+        req.session.errorMessage = 'Invalid credentials or user not found';
         return res.redirect(`http://localhost:3000/login`);
       }
+
+      delete req.session.errorMessage;
       res.redirect(`http://localhost:3000/`);
     })(req, res, next);
   }
@@ -53,6 +56,20 @@ router.get("/auth-status", (req: Request, res: Response) => {
   } else {
     res.json({ isAuthenticated: false });
   }
+});
+
+router.get('/session-message', (req: Request, res: Response) => {
+  if (req.session.errorMessage) {
+    res.json({ message: req.session.errorMessage });
+    delete req.session.errorMessage;
+  } else {
+    res.json({ message: '' });
+  }
+});
+
+router.get('/clear-session-message', (req: Request, res: Response) => {
+  delete req.session.errorMessage;
+  res.status(200).send('Session message cleared');
 });
 
 module.exports = router;

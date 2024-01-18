@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import styles from "./LoginContainer.module.css";
 import LoginButton from "./LoginButton";
 
 const LoginContainer = () => {
+  useEffect(() => {
+    const fetchSessionMessage = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/auth/google/session-message', {
+          credentials: 'include'
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.message) {
+            alert(data.message);
+          }
+          
+          await fetch('http://localhost:3001/auth/google/clear-session-message', {
+            credentials: 'include'
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching session message:', error);
+      }
+    };
+
+    fetchSessionMessage();
+  }, []);
+
   return (
     <main className={styles.container}>
       <div className={styles.loginBox}>
