@@ -3,16 +3,14 @@ import styles from "./LoginContainer.module.css";
 import LoginButton from "./LoginButton";
 
 const LoginContainer = () => {
-  const handleGoogleLogin = () => {
-    // Google 로그인 로직 구현
-  };
-
   return (
     <main className={styles.container}>
       <div className={styles.loginBox}>
         <h2>Login</h2>
         <div className={styles.loginButtonBox}>
-          <LoginButton />
+          <a href="http://localhost:3001/auth/google/login">
+            <LoginButton />
+          </a>
         </div>
         <div className={styles.signinBox}>
           <h4>Aren't you a member?</h4>

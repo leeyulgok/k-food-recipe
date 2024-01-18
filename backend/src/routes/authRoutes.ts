@@ -3,17 +3,22 @@ const passport = require("../utils/passport");
 const router = express.Router();
 import { NextFunction, Request, Response } from "express";
 import { UserType } from "../utils/types/UserType";
-import { getIsSuccessFromToken, verifyJWT } from "../utils/jwt";
+import { verifyJWT } from "../utils/jwt";
 
 router.get(
-  "/",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  "/signup",
+  passport.authenticate("google-signup", { scope: ["profile", "email"] })
 );
 
 router.get(
-  "/callback",
+  "/login",
+  passport.authenticate("google-login", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/signup/callback",
   (req: Request, res: Response, next: NextFunction) => {
-    passport.authenticate("google", { session: false }, (err: Error, user: UserType, info: any) => {
+    passport.authenticate("google-signup", { session: false }, (err: Error, user: UserType, info: any) => {
       if (!user) {
         const token = info.token;
         return res.redirect(`http://localhost:3000/signup/failure?token=${token}`);
@@ -23,6 +28,19 @@ router.get(
     })(req, res, next);
   }
 );
+
+router.get(
+  "/login/callback",
+  (req: Request, res: Response, next: NextFunction) => {
+    passport.authenticate("google-login", { session: false }, (err: Error, user: UserType, info: any) => {
+      if (!user) {
+        return res.redirect(`http://localhost:3000/login`);
+      }
+      res.redirect(`http://localhost:3000/`);
+    })(req, res, next);
+  }
+);
+
 
 router.get("/auth-status", (req: Request, res: Response) => {
   const authHeader = req.headers.authorization || "";
